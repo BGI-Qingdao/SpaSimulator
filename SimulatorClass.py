@@ -33,8 +33,17 @@ class Simulator:
 
 
 if __name__ == '__main__':
+    cell_types = 5
+    chip_size = 1.0
+    min_radius = 0.005
+    max_radius = 0.01
+    num_cells = 100
+    num_genes = 1000
+    num_marker_gene = 10
+    gene_expression_count = 125
+    h5ad_path = 'simulate_data.h5ad'
     simulator = Simulator()
-    adata = simulator.make_data(100, 1000, 5, 10, 125)
-    simulator.generate_h5ad_file(adata, 'simulate_data.h5ad')
-    simulator.simulate(adata, 5, 1, 0.005, 0.01, 100)
+    adata = simulator.make_data(num_cells, num_genes, cell_types, num_marker_gene, gene_expression_count)
+    simulator.generate_h5ad_file(adata, h5ad_path)
+    simulator.simulate(adata, cell_types, chip_size, min_radius, max_radius, num_cells)
 

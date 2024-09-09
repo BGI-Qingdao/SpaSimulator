@@ -1,4 +1,5 @@
 # scSimulator
+<<<<<<< HEAD
 
 Simple Cell Simulator(scSimulator) is a simple simulator for simulating cell distribution.
 
@@ -33,3 +34,6 @@ matplotlib==3.8.4
 python>=3.12.4
 ```
 
+=======
+Sample Cell Simulator
+>>>>>>> parent of b88ee81 (Write Readme)

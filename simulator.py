@@ -86,10 +86,14 @@ def simulate(adata, cell_types, chip_size, min_radius, max_radius, num_cells):
     plt.savefig('result.png')
 
     return adata
-cell_types = 11
+cell_types = 5
 chip_size = 1.0
 min_radius = 0.005
 max_radius = 0.01
-num_cells = 500
-adata = md.combine_cell_gene_with_markers(500, 100, 11, 10, 125)
+num_cells = 100
+num_genes = 1000
+num_marker_gene = 10
+gene_expression_count = 125
+
+adata = md.combine_cell_gene_with_markers(num_cells, num_genes, cell_types, num_marker_gene, gene_expression_count)
 adata_simulate = simulate(adata, cell_types, chip_size, min_radius, max_radius, num_cells)

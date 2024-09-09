@@ -113,7 +113,7 @@ def select_marker_genes(gene_expression,
 def combine_cell_gene_with_markers(num_cells,
                                    num_genes,
                                    num_types,
-                                   num_marker_gene,
+                                   num_marker_genes,
                                    gene_expression_count):
     """
 
@@ -141,5 +141,11 @@ def h5ad_file(adata, h5ad_path):
     adata.write_h5ad(h5ad_path)
     return h5ad_path
 
-adata = combine_cell_gene_with_markers(100, 1000, 5, 10, 125)
+num_cells = 100
+num_genes = 1000
+cell_types = 5
+num_marker_genes = 10
+gene_expression_count = 125
+
+adata = combine_cell_gene_with_markers(num_cells, num_genes, cell_types, num_marker_genes, 125)
 print(adata)
