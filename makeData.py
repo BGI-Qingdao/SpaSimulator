@@ -126,7 +126,7 @@ def combine_cell_gene_with_markers(num_cells,
     """
     cells = generate_cell(num_cells, num_types)
     gene_expression = generate_gene_expression(num_genes, num_cells,gene_expression_count)
-    gene_expression = select_marker_genes(gene_expression, cells, num_marker_gene, gene_expression_count)
+    gene_expression = select_marker_genes(gene_expression, cells, num_marker_genes, gene_expression_count)
 
     adata = ad.AnnData(X=gene_expression.T)
     adata.obs_names = [cell[0] for cell in cells]

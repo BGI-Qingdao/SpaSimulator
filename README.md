@@ -19,8 +19,7 @@ https://github.com/lucaMaYuelong/scSimulator.git
 ```
 
 Create new project on Pycharm --> VCS --> Get from Version Control --> Input url
-
-![github](D:\文件\华大\scSimulator\assets\github.png)
+<img src="./resource/github.png" alt="image-20240909171407833" style="zoom:50%;" />
 
 ### Dependencies:
 
@@ -104,15 +103,15 @@ python main.py -nc 100 -ng 1000 -ct 5 -nmg 10 -gec 125 -dp 'simulate_data.h5ad' 
 ### Parameters expalanation:
 
 ```
-('-nc', '--num_cells', help='Enter the number of cells to be generated')
-('-ng', '--num_genes', help='Enter the number of genes to be generated')
-('-ct', '--cell_types', help='Enter the number of cell types to be generated')
-('-nmg', '--num_marker_genes', help='Enter the number of marker genes to be generated')
-('-gec', '--gene_expression_count', help='The average expression of non-zero expression genes')
-('-dp', '--scSimulate_data_h5ad_path', default='simulate_data.h5ad', help='The data saved in the simulation is in h5ad formate')
-('-cs', '--chip_size_mm', type=int, help='size of chip, unit is mm')
-('-minr', '--min_radius_mm', type=int, help='minimum radius of cells, unit is mm')
-('-maxr', '--max_radius_mm', type=int, help='maximum radius of cells, unit is mm')
+('-nc', '--num_cells', meaning='Enter the number of cells to be generated')
+('-ng', '--num_genes', meaning='Enter the number of genes to be generated')
+('-ct', '--cell_types', meaning='Enter the number of cell types to be generated')
+('-nmg', '--num_marker_genes', meaning='Enter the number of marker genes to be generated')
+('-gec', '--gene_expression_count', meaning='The average expression of non-zero expression genes')
+('-dp', '--scSimulate_data_h5ad_path', default='simulate_data.h5ad', meaning='The data saved in the simulation is in h5ad formate')
+('-cs', '--chip_size_mm', type=int, meaning='size of chip, unit is mm')
+('-minr', '--min_radius_mm', type=int, meaning='minimum radius of cells, unit is mm')
+('-maxr', '--max_radius_mm', type=int, meaning='maximum radius of cells, unit is mm')
 ```
 
 All results will be save in a h5ad file, default file name is `simulate_data.h5ad`
@@ -123,5 +122,5 @@ All results will be save in a h5ad file, default file name is `simulate_data.h5a
 
 scSimulator offers a picture to show cell distribution.
 
-<img src="D:\文件\华大\scSimulator\assets\image-20240909171407833.png" alt="image-20240909171407833" style="zoom:50%;" />
+<img src="./resource/result.png" alt="image-20240909171407833" style="zoom:50%;" />
 

@@ -78,14 +78,12 @@ def simulate(adata, cell_types, chip_size, min_radius, max_radius, num_cells):
     ax.set_title('Simulated Tissue on Chip with Non-overlapping Cells')
     ax.set_xlabel('mm')
     ax.set_ylabel('mm')
-
-    # 显示图形
-    plt.show()
-
     # 保存图形
     plt.savefig('result.png')
-
+    # 显示图形
+    plt.show()
     return adata
+
 cell_types = 5
 chip_size = 1.0
 min_radius = 0.005
