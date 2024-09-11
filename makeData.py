@@ -76,13 +76,13 @@ def generate_cell(num_cells, num_types):
 
 def select_marker_genes(gene_expression,
                         cells,
-                        num_marker_gene,
+                        num_degs,
                         gene_expression_count):
     """
     选取marker gene
     :param gene_expression: 基因表达量矩阵，不包含marker gene
     :param cells: 细胞，包含细胞ID和细胞类型
-    :param num_marker_gene: 选取marker gene的数量
+    :param num_degs: 选取DEGs的数量
     :param gene_expression_amount: 基因表达量的平均值
     :return:
     gene_expression: 包含marker gene的基因表达集
@@ -97,7 +97,7 @@ def select_marker_genes(gene_expression,
         gene_mean_expression = np.mean(gene_expression[:, indices], axis=1)
         available_genes = np.arange(gene_mean_expression.size)
         available_genes = available_genes[~np.isin(available_genes, selected_genes)]
-        num_to_select = min(num_marker_gene, len(available_genes))
+        num_to_select = min(num_degs, len(available_genes))
         if num_to_select == 0:
             continue
         top_genes_indices = np.argsort(gene_mean_expression[available_genes])[::-1][:num_to_select]
@@ -113,20 +113,20 @@ def select_marker_genes(gene_expression,
 def combine_cell_gene_with_markers(num_cells,
                                    num_genes,
                                    num_types,
-                                   num_marker_genes,
+                                   num_degs,
                                    gene_expression_count):
     """
 
     :param num_cells: 细胞数量
     :param num_genes: 基因数量
     :param num_types: 细胞类型数量
-    :param num_marker_gene: marker_gene数量
+    :param num_degs: DEGs数量
     :param gene_expression_count: 基因表达量均值
     :return:
     """
     cells = generate_cell(num_cells, num_types)
     gene_expression = generate_gene_expression(num_genes, num_cells,gene_expression_count)
-    gene_expression = select_marker_genes(gene_expression, cells, num_marker_genes, gene_expression_count)
+    gene_expression = select_marker_genes(gene_expression, cells, num_degs, gene_expression_count)
 
     adata = ad.AnnData(X=gene_expression.T)
     adata.obs_names = [cell[0] for cell in cells]
@@ -144,8 +144,8 @@ def h5ad_file(adata, h5ad_path):
 num_cells = 100
 num_genes = 1000
 cell_types = 5
-num_marker_genes = 10
+num_degs = 10
 gene_expression_count = 125
 
-adata = combine_cell_gene_with_markers(num_cells, num_genes, cell_types, num_marker_genes, 125)
+adata = combine_cell_gene_with_markers(num_cells, num_genes, cell_types, num_degs, 125)
 print(adata)

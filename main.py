@@ -8,7 +8,7 @@ def parse_args():
     parse.add_argument('-nc', '--num_cells', help='Enter the number of cells to be generated')
     parse.add_argument('-ng', '--num_genes', help='Enter the number of genes to be generated')
     parse.add_argument('-ct', '--cell_types', help='Enter the number of cell types to be generated')
-    parse.add_argument('-nmg', '--num_marker_genes', help='Enter the number of marker genes to be generated')
+    parse.add_argument('-nmg', '--num_degs', help='Enter the number of DEGs to be generated')
     parse.add_argument('-gec', '--gene_expression_count', help='The average expression of non-zero expression genes')
     parse.add_argument('-dp', '--scSimulate_data_h5ad_path', default='simulate_data.h5ad', help='The data saved in '
                                                                                                 'the simulation is in '
@@ -25,7 +25,7 @@ if __name__ == '__main__':
     num_cells = args.num_cells
     num_genes = args.num_genes
     cell_types = args.cell_types
-    num_marker_genes = args.num_marker_genes
+    num_degs = args.num_degs
     gene_expression_count = args.gene_expression_count
     scSimulate_data_h5ad_path = args.scSimulate_data_h5ad_path
     chip_size_mm = args.chip_size_mm
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     max_radius_mm = args.max_radius_mm
 
     # simulate data
-    madata = md.combine_cell_gene_with_markers(num_cells, num_genes, cell_types, num_marker_genes, gene_expression_count)
+    madata = md.combine_cell_gene_with_markers(num_cells, num_genes, cell_types, num_degs, gene_expression_count)
 
     # generate h5ad file
     md.h5ad_file(madata, scSimulate_data_h5ad_path)

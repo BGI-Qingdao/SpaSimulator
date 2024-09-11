@@ -117,8 +117,8 @@ min_radius = 0.005
 max_radius = 0.01
 num_cells = 100
 num_genes = 1000
-num_marker_gene = 10
+num_degs = 10
 gene_expression_count = 125
 
-adata = md.combine_cell_gene_with_markers(num_cells, num_genes, cell_types, num_marker_gene, gene_expression_count)
+adata = md.combine_cell_gene_with_markers(num_cells, num_genes, cell_types, num_degs, gene_expression_count)
 adata_simulate = simulate(adata, cell_types, chip_size, min_radius, max_radius, num_cells)
