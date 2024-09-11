@@ -9,13 +9,15 @@ class Simulator:
         print("调用构造方法")
 
     def make_data(self,
-                  gene_expression,
-                  cells,
-                  num_marker_gene,
+                  num_cells,
+                  num_genes,
+                  num_types,
+                  num_marker_genes,
                   gene_expression_count):
-        adata = md.combine_cell_gene_with_markers(gene_expression,
-                  cells,
-                  num_marker_gene,
+        adata = md.combine_cell_gene_with_markers(num_cells,
+                  num_genes,
+                  num_types,
+                  num_marker_genes,
                   gene_expression_count)
         return adata
 

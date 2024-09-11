@@ -1,12 +1,12 @@
 # scSimulator
 
-Simple Cell Simulator(scSimulator) is a simple simulator for simulating cell distribution.
+Special Cell Simulator(scSimulator) is a simple simulator for simulating cell distribution.
 
 ## Overview
 
 ------
 
-scSimulator is an open source python package. It uses mathematical functions such as binomial distribution and normal distribution to simulate gene expression in cells, which is similar to real data. It uses Gaussian mixture distribution to simulate the simple distribution of different cell types in tissues.
+SpaSimulator is an open source python package. It uses mathematical functions such as binomial distribution and normal distribution to simulate gene expression in cells, which is similar to real data. It uses Gaussian mixture distribution to simulate the simple distribution of different cell types in tissues.
 
 ## Installation
 

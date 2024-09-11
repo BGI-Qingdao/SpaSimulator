@@ -3,7 +3,9 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import makeData as md
 
-def is_overlapping(new_cell, placed_cells, new_radius):
+def is_overlapping(new_cell,
+                   placed_cells,
+                   new_radius):
     """检查新细胞是否与已放置的细胞重叠"""
     for placed_cell in placed_cells:
         distance = np.sqrt((new_cell[0] - placed_cell[0]) ** 2 + (new_cell[1] - placed_cell[1]) ** 2)
@@ -11,7 +13,30 @@ def is_overlapping(new_cell, placed_cells, new_radius):
             return True
     return False
 
-def simulate(adata, cell_types, chip_size, min_radius, max_radius, num_cells):
+def save_to_gem(cell_positions, filename):
+    """将细胞位置保存为GEM格式文件"""
+    with open(filename, 'w') as f:
+        f.write("CellID\tX\tY\n")  # 写入表头
+        for i, position in enumerate(cell_positions):
+            if not np.isnan(position[0]) and not np.isnan(position[1]):  # 确保位置有效
+                f.write(f"Cell_{i+1}\t{position[0]}\t{position[1]}\n")
+
+def simulate(adata,
+             cell_types,
+             chip_size,
+             min_radius,
+             max_radius,
+             num_cells):
+    """
+    模拟细胞在组织芯片上空间分布
+    :param adata: 生成的基因表达矩阵
+    :param cell_types: 细胞类型数量
+    :param chip_size: 芯片尺寸
+    :param min_radius: 细胞最小半径，细胞默认为圆形
+    :param max_radius: 细胞最大半径，细胞默认为圆形
+    :param num_cells: 细胞数量
+    :return:
+    """
     # 创建一个图形和轴
     fig, ax = plt.subplots()
 
@@ -82,6 +107,8 @@ def simulate(adata, cell_types, chip_size, min_radius, max_radius, num_cells):
     plt.savefig('result.png')
     # 显示图形
     plt.show()
+    # 保存细胞位置到GEM文件
+    save_to_gem(cell_positions, 'cell_positions.gem')
     return adata
 
 cell_types = 5
